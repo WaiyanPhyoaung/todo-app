@@ -14,7 +14,6 @@ type Option = {
   label: string;
   value: FilterOptions;
 };
-// Add a prop for the callback function
 
 function Select() {
   const [selectedOption, setSelectedOption] = useState(options[0]);

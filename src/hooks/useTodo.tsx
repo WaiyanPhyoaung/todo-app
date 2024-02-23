@@ -34,7 +34,6 @@ export const useTodo = () => {
     fetchTodos();
   }, [fetchTodos]);
 
-  // when currentfilter is done & add new, It shoudn't be appeared in done category
   const addTodo = useCallback(
     async (title: string) => {
       const newTodo = {
@@ -43,7 +42,6 @@ export const useTodo = () => {
         completed: currentFilter === FilterOptions.done ? true : false,
       };
       // Optimistically add the new todo to the state
-
       setTodos((currentTodos) => [...currentTodos, newTodo]);
 
       try {
@@ -80,7 +78,7 @@ export const useTodo = () => {
         // Fetch todos again
         fetchTodos();
       } catch (error) {
-        // Revert to previous state if the request fails (for simplicity, fetching all todos again)
+        // Revert to previous state if the request fails
         fetchTodos();
       }
     },

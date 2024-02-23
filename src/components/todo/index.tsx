@@ -1,7 +1,6 @@
 import styles from "./todo.module.css";
 import dots from "../../assets/dots.svg";
 import { FormEvent, useState } from "react";
-
 import type { TodoType } from "../../App";
 import useClickOutside from "../../hooks/useClickOutside";
 

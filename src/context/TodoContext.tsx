@@ -23,7 +23,6 @@ export const useTodoContext = () => {
 };
 
 export const TodoProvider = ({ children }: { children: ReactNode }) => {
-  // The value object here is what gets passed down to the context consumers
   const value = useTodo();
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
 };
