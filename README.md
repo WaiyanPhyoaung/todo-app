@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# Todo List Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is a simple Todo List application built with React. The application allows users to manage their tasks by adding new todos, marking them as completed, updating existing todos, and deleting todos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Add Todo**: Users can add new todos by entering a task title and pressing Enter or clicking the "Add" button.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Update Todo**: Users can update the title of an existing todo by clicking on it and editing the text. Changes are saved automatically when the user finishes editing.
 
-- Configure the top-level `parserOptions` property like this:
+- **Mark as Completed**: Users can mark a todo as completed by clicking on the checkbox next to the todo title. Completed todos are visually distinguished from active todos.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- **Delete Todo**: Users can delete a todo by clicking on the delete button next to the todo. Once deleted, the todo is permanently removed from the list.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Filter Todos**: Users can filter the todo list to show all todos, only active todos, or only completed todos using the filter options.
+
+- **Tracking completed**: Users can track the progress of how many lists are done.
+
+## Technologies Used
+
+- **React**: The project is built using React, a popular JavaScript library for building user interfaces.
+
+- **CSS Modules**: Styling is done using CSS Modules, which allows for scoped styles and better organization of CSS code.
+
+- **React Context API**: The Todo list state is managed using the React Context API, providing a centralized state management solution.
+
+- **JSON Server**: A simple JSON server is used to simulate a backend API for storing and retrieving todo data.
+
+## Development Approach
+
+In creating this project, I paid close attention to every detail, including how the app looks and feels, the way it functions, and how it's built behind the scenes. This involved making sure the code is well-organized and easy to understand, using custom tools when needed, and ensuring the app can grow without issues. I also focused on making it run smoothly and efficiently. Overall, I aimed to follow the best practices in software development to deliver a high-quality product.
+
+## Installation
+
+To run the application locally, follow these steps:
+
+1. Clone the repository to your local machine:
+2. Navigate to the project directory:
+3. Install dependencies:
+4. Start the development server:
+
+his will start the development server and open the application in your default web browser.
