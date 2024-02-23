@@ -1,0 +1,70 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  max-width: 1920px;
+  padding-block: 5rem;
+  width: 518px;
+  margin-inline: auto;
+}
+
+.progress_container {
+  background-color: #e07c7c;
+  border-radius: 20px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+}
+.progress_heading {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 32.81px;
+  color: #ffffff;
+}
+.progress_line {
+  margin-block: 0.6rem;
+  width: 100%;
+  height: 7px;
+  background-color: #3b3b3b;
+  position: relative;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress_bar {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 999px;
+  transition: all 0.2s;
+}
+.completed_text {
+  color: #ebb9b8;
+}
+
+/* listcontainer */
+.list_container {
+  margin-top: 2rem;
+  width: 100%;
+}
+.list_heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+.tasks_text {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0rem;
+  text-align: left;
+}
+
+.input_text {
+  width: 100%;
+  height: 46px;
+  border-radius: 9999px;
+  border: none;
+  outline: none;
+  padding-inline: 1.5rem;
+}
