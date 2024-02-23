@@ -1,8 +1,9 @@
 import Select from "./components/select";
 import Todo from "./components/todo";
 import styles from "./app.module.css";
-import { FormEvent, useCallback, useEffect, useMemo } from "react";
+import { FormEvent, useCallback, useEffect } from "react";
 import { useTodoContext } from "./context/TodoContext";
+import useCompletionStats from "./hooks/useCompletionStats";
 
 export type TodoType = {
   id: string;
@@ -20,6 +21,12 @@ function App() {
     deleteTodo,
   } = useTodoContext();
 
+  const [completionRate, completedCount] = useCompletionStats(
+    todoLists,
+    currentFilter,
+    fetchTodos
+  );
+
   useEffect(() => {
     fetchTodos(currentFilter);
   }, [currentFilter, fetchTodos]);
@@ -33,15 +40,6 @@ function App() {
     },
     [addTodo]
   );
-
-  const totalCount = todoLists.length;
-  const completedCount = useMemo(
-    () =>
-      Array.isArray(todoLists) &&
-      todoLists.filter((todo) => todo.completed).length,
-    [todoLists]
-  );
-  const completionRate = (+completedCount / totalCount) * 100;
 
   return (
     <main className={styles.container}>

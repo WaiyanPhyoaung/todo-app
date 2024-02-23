@@ -35,7 +35,7 @@
   height: 100%;
   background-color: #fff;
   border-radius: 999px;
-  transition: all 0.2s;
+  transition: all 0.5s;
 }
 .completed_text {
   color: #ebb9b8;
