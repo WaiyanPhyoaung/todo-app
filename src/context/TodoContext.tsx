@@ -1,11 +1,11 @@
 import { createContext, useContext, ReactNode } from "react";
 import { TodoType } from "../App";
-import { useTodo } from "../hooks/useTodo";
+import { FilterOptions, useTodo } from "../hooks/useTodo";
 
 type TodoContextType = {
   todoLists: TodoType[];
-  currentFilter: string;
-  setCurrentFilter: (arg: string) => void;
+  currentFilter: FilterOptions;
+  setCurrentFilter: (arg: FilterOptions) => void;
   fetchTodos: (filter: string) => void;
   addTodo: (title: string) => void;
   updateTodo: (id: string, todo: Partial<TodoType>) => void;

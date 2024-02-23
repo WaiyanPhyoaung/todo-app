@@ -3,20 +3,25 @@ import { TodoType } from "../App";
 
 export const URL = "http://localhost:3001/todos";
 
+export enum FilterOptions {
+  all = "all",
+  done = "done",
+  undone = "undone",
+}
+
 export const useTodo = () => {
   const [todoLists, setTodos] = useState<TodoType[]>([]);
-  const [currentFilter, setCurrentFilter] = useState("all");
+  const [currentFilter, setCurrentFilter] = useState(FilterOptions.all);
 
   const fetchTodos = useCallback(async () => {
     // Construct the URL based on the filter
     let url = URL;
-    if (currentFilter === "done") {
+    if (currentFilter === FilterOptions.done) {
       url += "?completed=true";
-    } else if (currentFilter === "undone") {
+    } else if (currentFilter === FilterOptions.undone) {
       url += "?completed=false";
     }
     try {
-      console.log(url);
       const response = await fetch(url);
       const data = await response.json();
       setTodos(data);
@@ -32,11 +37,14 @@ export const useTodo = () => {
   // when currentfilter is done & add new, It shoudn't be appeared in done category
   const addTodo = useCallback(
     async (title: string) => {
-      const newTodo = { id: "", title, completed: false };
+      const newTodo = {
+        id: "",
+        title,
+        completed: currentFilter === FilterOptions.done ? true : false,
+      };
       // Optimistically add the new todo to the state
-      if (currentFilter !== "done") {
-        setTodos((currentTodos) => [...currentTodos, newTodo]);
-      }
+
+      setTodos((currentTodos) => [...currentTodos, newTodo]);
 
       try {
         await fetch(`${URL}`, {

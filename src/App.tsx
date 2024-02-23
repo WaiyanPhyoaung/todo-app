@@ -4,6 +4,7 @@ import styles from "./app.module.css";
 import { FormEvent, useCallback, useEffect } from "react";
 import { useTodoContext } from "./context/TodoContext";
 import useCompletionStats from "./hooks/useCompletionStats";
+import ProgressCard from "./components/progressCard";
 
 export type TodoType = {
   id: string;
@@ -43,16 +44,10 @@ function App() {
 
   return (
     <main className={styles.container}>
-      <section className={styles.progress_container}>
-        <h1 className={styles.progress_heading}>Progress</h1>
-        <div className={styles.progress_line}>
-          <div
-            className={styles.progress_bar}
-            style={{ width: `${completionRate}%` }}
-          ></div>
-        </div>
-        <p className={styles.completed_text}>{completedCount} completed</p>
-      </section>
+      <ProgressCard
+        completedCount={completedCount}
+        completionRate={completionRate}
+      />
       <section className={styles.list_container}>
         <div className={styles.list_heading}>
           <h2 className={styles.tasks_text}>Tasks</h2>

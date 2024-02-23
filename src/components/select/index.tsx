@@ -3,15 +3,16 @@ import styles from "./select.module.css";
 import chevDown from "../../assets/chev-down.svg";
 import { useTodoContext } from "../../context/TodoContext";
 import useClickOutside from "../../hooks/useClickOutside";
+import { FilterOptions } from "../../hooks/useTodo";
 
 const options: Option[] = [
-  { value: "all", label: "All" },
-  { value: "done", label: "Done" },
-  { value: "undone", label: "Undone" },
+  { value: FilterOptions.all, label: "All" },
+  { value: FilterOptions.done, label: "Done" },
+  { value: FilterOptions.undone, label: "Undone" },
 ];
 type Option = {
   label: string;
-  value: string;
+  value: FilterOptions;
 };
 // Add a prop for the callback function
 
