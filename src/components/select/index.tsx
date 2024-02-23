@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./select.module.css";
 import chevDown from "../../assets/chev-down.svg";
+import { useTodoContext } from "../../context/TodoContext";
+import useClickOutside from "../../hooks/useClickOutside";
 
 const options: Option[] = [
   { value: "all", label: "All" },
@@ -11,19 +13,24 @@ type Option = {
   label: string;
   value: string;
 };
+// Add a prop for the callback function
+
 function Select() {
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
+  const { setCurrentFilter } = useTodoContext();
+
+  const { isOpen, setIsOpen, ref } = useClickOutside();
 
   const toggling = () => setIsOpen(!isOpen);
 
   const onOptionClicked = (option: Option) => () => {
     setSelectedOption(option);
     setIsOpen(false);
+    setCurrentFilter(option.value);
   };
 
   return (
-    <div className={styles.dropdown}>
+    <div ref={ref} className={styles.dropdown}>
       <div className={styles.dropdownHeader} onClick={toggling}>
         <span>{selectedOption.label}</span>
         <img

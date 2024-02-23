@@ -11,6 +11,11 @@
   width: 20px;
   transition: all 0.2s;
 }
+
+.chev:hover {
+  color: red;
+  filter: brightness(0) invert(1);
+}
 .dropdownHeader {
   padding: 0.5rem 0.7rem;
   background-color: #ffffff;

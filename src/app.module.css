@@ -4,9 +4,8 @@
   justify-content: start;
   align-items: center;
   flex-direction: column;
-  max-width: 1920px;
-  padding-block: 5rem;
-  width: 518px;
+  padding: 1rem;
+  max-width: 518px;
   margin-inline: auto;
 }
 
@@ -67,4 +66,15 @@
   border: none;
   outline: none;
   padding-inline: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-block: 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    padding-block: 5rem;
+  }
 }

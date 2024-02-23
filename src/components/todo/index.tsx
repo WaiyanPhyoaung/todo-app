@@ -3,6 +3,7 @@ import dots from "../../assets/dots.svg";
 import { FormEvent, useState } from "react";
 
 import type { TodoType } from "../../App";
+import useClickOutside from "../../hooks/useClickOutside";
 
 type TodoProps = {
   todo: TodoType;
@@ -11,17 +12,17 @@ type TodoProps = {
 };
 
 function Todo({ todo, updateTodo, deleteTodo }: TodoProps) {
-  const [showEdit, setShowEdit] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [isCompleted, setIsCompleted] = useState(todo.completed);
   const [title, setTitle] = useState(todo.title);
+  const { isOpen, setIsOpen, ref } = useClickOutside();
 
   const editTitleHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     updateTodo(todo.id, { ...todo, title });
     setTitle("");
     setIsEdit(false);
-    setShowEdit(false);
+    setIsOpen(false);
   };
 
   const updateCompletedHandler = () => {
@@ -37,7 +38,7 @@ function Todo({ todo, updateTodo, deleteTodo }: TodoProps) {
             <input
               autoFocus
               onChange={(e) => setTitle(e.target.value)}
-              defaultValue={title}
+              defaultValue={todo.title}
               className={styles.input_text}
               type="text"
             />
@@ -63,15 +64,15 @@ function Todo({ todo, updateTodo, deleteTodo }: TodoProps) {
               {todo.title}
             </span>
           </label>
-          <div className={styles.dots_container}>
+          <div ref={ref} className={styles.dots_container}>
             <img
               className={styles.dots}
               src={dots}
               alt="dots"
-              onClick={() => setShowEdit(!showEdit)}
+              onClick={() => setIsOpen(!isOpen)}
             />
             <div
-              style={{ display: showEdit ? "block" : "none" }}
+              style={{ display: isOpen ? "block" : "none" }}
               className={styles.dots_popup}
             >
               <p onClick={() => setIsEdit(true)}>Edit</p>

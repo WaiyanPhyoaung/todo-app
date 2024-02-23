@@ -1,8 +1,8 @@
 import Select from "./components/select";
 import Todo from "./components/todo";
 import styles from "./app.module.css";
-import { FormEvent, useMemo } from "react";
-import useTodos from "./hooks/useTodos";
+import { FormEvent, useCallback, useEffect, useMemo } from "react";
+import { useTodoContext } from "./context/TodoContext";
 
 export type TodoType = {
   id: string;
@@ -11,19 +11,35 @@ export type TodoType = {
 };
 
 function App() {
-  const { todos, addTodo, updateTodo, deleteTodo } = useTodos();
-  console.log(todos);
-  const addTodoHandler = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const input = event.currentTarget.elements[0] as HTMLInputElement;
-    console.log(input.value);
-    addTodo(input.value);
-    input.value = "";
-  };
-  const totalCount = todos.length;
+  const {
+    todoLists,
+    currentFilter,
+    fetchTodos,
+    addTodo,
+    updateTodo,
+    deleteTodo,
+  } = useTodoContext();
+
+  useEffect(() => {
+    fetchTodos(currentFilter);
+  }, [currentFilter, fetchTodos]);
+
+  const addTodoHandler = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const input = event.currentTarget.elements[0] as HTMLInputElement;
+      addTodo(input.value);
+      input.value = "";
+    },
+    [addTodo]
+  );
+
+  const totalCount = todoLists.length;
   const completedCount = useMemo(
-    () => Array.isArray(todos) && todos.filter((todo) => todo.completed).length,
-    [todos]
+    () =>
+      Array.isArray(todoLists) &&
+      todoLists.filter((todo) => todo.completed).length,
+    [todoLists]
   );
   const completionRate = (+completedCount / totalCount) * 100;
 
@@ -46,8 +62,8 @@ function App() {
         </div>
 
         <div className={styles.lists}>
-          {Array.isArray(todos) && todos.length > 1
-            ? todos.map((todo) => (
+          {Array.isArray(todoLists) && todoLists.length > 0
+            ? todoLists.map((todo) => (
                 <Todo
                   key={todo.id}
                   todo={todo}
