@@ -26,8 +26,6 @@ This is a simple Todo List application built with React. The application allows 
 
 - **React Context API**: The Todo list state is managed using the React Context API, providing a centralized state management solution.
 
-- **JSON Server**: A simple JSON server is used to simulate a backend API for storing and retrieving todo data.
-
 ## Development Approach
 
 In creating this project, I paid close attention to every detail, including how the app looks and feels, the way it functions, and how it's built behind the scenes. This involved making sure the code is well-organized and easy to understand, using custom tools when needed, and ensuring the app can grow without issues. I also focused on making it run smoothly and efficiently. Overall, I aimed to follow the best practices in software development to deliver a high-quality product.
@@ -37,8 +35,27 @@ In creating this project, I paid close attention to every detail, including how 
 To run the application locally, follow these steps:
 
 1. Clone the repository to your local machine:
-2. Navigate to the project directory:
-3. Install dependencies:
-4. Start the development server:
 
-his will start the development server and open the application in your default web browser.
+```bash
+$ git clone git@github.com:WaiyanPhyoaung/todo-app.git
+```
+
+2. Install dependencies:
+
+```bash
+$ npm install
+```
+
+4. Change env variable with your todo server
+
+```bash
+$ VITE_BASE_API_URL=http://localhost:3001
+```
+
+5. Start the development server:
+
+```bash
+$ npm run dev
+```
+
+This will start the development server and open the application in your default web browser.
