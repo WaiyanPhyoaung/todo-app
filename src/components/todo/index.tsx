@@ -46,7 +46,7 @@ function Todo({ todo, updateTodo, deleteTodo }: TodoProps) {
         </div>
       ) : (
         <div className={styles.task_container}>
-          <label>
+          <label className={styles.todo_label}>
             <input
               checked={isCompleted}
               onChange={updateCompletedHandler}

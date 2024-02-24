@@ -14,6 +14,7 @@
   border: none;
   outline: none;
   padding-inline: 1.5rem;
+  padding-right: 78px;
 }
 .save_btn {
   cursor: pointer;
@@ -34,9 +35,18 @@
 .save_btn:active {
   transform: scale(0.99);
 }
+.todo_label {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
 .task_name {
+  width: 100%;
+  overflow: hidden;
   display: inline-block;
-  padding-left: 0.5rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-inline: 0.5rem;
 }
 .dots_container {
   position: relative;

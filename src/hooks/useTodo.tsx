@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { TodoType } from "../App";
 
-export const URL = "http://localhost:3001/todos";
+export const URL = `${import.meta.env.VITE_BASE_API_URL}/todos`;
 
 export enum FilterOptions {
   all = "all",
